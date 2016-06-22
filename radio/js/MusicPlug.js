@@ -1,4 +1,5 @@
 function MusicPlug($ct){
+    this.appendPlugHtml();
     this.init($ct);
     this.vol = 1.0;//默认音量为1.0
     this.lyricBtn.status=false;//默认歌词关闭
