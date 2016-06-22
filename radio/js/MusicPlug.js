@@ -63,6 +63,7 @@ MusicPlug.prototype={
         +'</div>'
         +'</div>'
         +'</div>'
+      $('body').append(plugHtml);  
     },
     init:function($ct){
       this.aside=$ct.find('.cover');
@@ -388,4 +389,4 @@ MusicPlug.prototype={
   });
 }
 };
-var musicPlug=new MusicPlug();
+var musicPlug=new MusicPlug($('#radio'));
