@@ -363,7 +363,7 @@ MusicPlug.prototype={
     var curTime=this.myAuto[0].currentTime*1000;
     for(var i=0;i<this.lTime.length;i++){
       if(curTime>=this.lTime[i]&&curTime<=this.lTime[i+1]){
-        $('#'+this.lTime[i]).css({color: '#f00',display:'block'});
+        $('#'+this.lTime[i]).css({color: '#fff',display:'block'});
         this.lyricSpa.removeClass('hide');
       }else{
         $('#'+this.lTime[i]).css({display:'none'});
