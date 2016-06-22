@@ -1,5 +1,6 @@
-function MusicPlug($ct){
+function MusicPlug(){
     this.appendPlugHtml();
+    $ct=$('#radio');
     this.init($ct);
     this.vol = 1.0;//默认音量为1.0
     this.lyricBtn.status=false;//默认歌词关闭
@@ -64,7 +65,7 @@ MusicPlug.prototype={
         +'</div>'
         +'</div>'
         +'</div>'
-      $('body').append(plugHtml);  
+      $('body').append(plugHtml);
     },
     init:function($ct){
       this.aside=$ct.find('.cover');
@@ -164,15 +165,12 @@ MusicPlug.prototype={
       var _this=this;
       $.get('http://api.jirengu.com/fm/getChannels.php')
       .done(function(channelInfo){
-        console.log(channelInfo);
         _this.channelsName=$.parseJSON(channelInfo).channels;
         _this.isChannelListLoaded=true;
-        console.log(_this.channelsName);
         _this.placeAside();
     });
   },
     placeAside:function(){               //dom摆放频道列表
-      console.log(this.channelsName);
       var tpl='<ul id="music-aside">';
       for (var i = 0; i < this.channelsName.length; i++) {
         tpl+='<li>'+this.channelsName[i].name+' MHz</li>';
@@ -185,7 +183,6 @@ MusicPlug.prototype={
       var _this=this;
       $.get('http://api.jirengu.com/fm/getSong.php',{channel: channel})
       .done(function(song){
-        console.log(song);
         _this.songUrl=$.parseJSON(song).song[0].url,
         _this.title=$.parseJSON(song).song[0].title,
         _this.bgImg=$.parseJSON(song).song[0].picture,
@@ -323,13 +320,10 @@ MusicPlug.prototype={
       var lyricArr=this.lyric.split('\n'),
       reg=/\[\d*\:\d*((\.|\:)\d*)*\]/g,
       tFlag=0;
-      console.log(lyricArr);
       this.lTime=[];//存储时间
       this.lData=[];//存储歌词，索引为时间
       for(i in lyricArr){
-        console.log("____________start__________"+i);
         this.ltime=lyricArr[i].match(reg);
-        console.log(this.ltime);
         if(!this.ltime) continue;
         lyricText=lyricArr[i].replace(reg,'');
         lyricText=lyricText.replace(/\[offset:.+\]/g,'');
@@ -348,7 +342,6 @@ MusicPlug.prototype={
   }
 }
     this.lTime.sort(function(a,b){   //从小到大排序
-      console.log(a,b);
       return a-b;
   });
 },
@@ -357,7 +350,6 @@ MusicPlug.prototype={
     var tpl='';
     for(var i=1; i< this.lTime.length;i++){
       tpl+='<div id='+this.lTime[i]+'>'+this.lData[this.lTime[i]]+'</div>';
-      console.log(tpl);
   }
   var $nodes=$(tpl);
   this.lyricSpa.append($nodes);
@@ -390,4 +382,4 @@ MusicPlug.prototype={
   });
 }
 };
-var musicPlug=new MusicPlug($('#radio'));
+var musicPlug=new MusicPlug();
