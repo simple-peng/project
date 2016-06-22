@@ -43,7 +43,7 @@ MusicPlug.prototype={
         +'<div class="song-name"></div>'
         +'<div class="play-control">'
         +'<span class="icon icon-play-circle2 play">'
-        +'<iframe id="frame" src="../nullrefer.html" frameborder="0"></iframe>'
+        +'<iframe id="frame" src="./nullrefer.html" frameborder="0"></iframe>'
         +'</span>'
         +'</div>'
         +'<div class="lyric-space hide"></div>'
