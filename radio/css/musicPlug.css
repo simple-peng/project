@@ -1,0 +1,153 @@
+body,html,ul,li{
+      margin: 0;
+      padding:0;
+      box-sizing: border-box;
+    }
+    ul,li{
+      list-style: none;
+    }
+    .blur{
+     -webkit-filter: blur(2px); /* Chrome, Opera */
+     -moz-filter: blur(2px);
+     -ms-filter: blur(2px);
+     filter: blur(2px);
+   }
+   .hide{
+    display: none;
+  }
+  .music-logo{
+    position: absolute;
+    top:0px;
+    left: 300px;
+  }
+  .music-box{
+    position: absolute;
+    width: 300px;
+  }
+  .music-box .icon{
+    color: white;
+  }
+  .music-box .cover{
+    position: absolute;
+    top:0;
+    left: 0;
+    overflow-y: auto;
+    overflow-x:hidden;
+    width: 70%;
+    height: 100%;
+    z-index: 100;
+    /*background-color: pink;*/
+    display: none;
+  }
+  .radioInfo{
+    position: absolute;
+    top:0;
+    right: 0;
+    font-size: 16px;
+    color: white;
+    z-index: 100;
+    background-color: pink;
+  }
+  .music-box .music-ct{
+    height: 100%;
+    background-image:-webkit-linear-gradient(left top, rgba(255,0,0,0.5), rgba(0,255,255,0.5));
+    background-image:-moz-linear-gradient(bottom right, rgba(255,0,0,0.5), rgba(0,255,255,0.5));
+    background-image:linear-gradient(to bottom right, rgba(255,0,0,0.5) , rgba(0,255,255,0.5));
+    background-repeat:no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+  }
+  .music-box .music-ct .header{
+    line-height: 50px;
+    padding-bottom: 45px;
+  }
+  .music-box .cover .header{
+    line-height: 50px;
+  }
+  .music-box .cover #channels{
+    position: relative;
+  }
+  .music-box .cover #music-aside{
+    position: absolute;
+    top: 0;
+    left: 0;
+    list-style: none;
+    font-size: 16px;
+    color: white;
+  }
+  .music-box .cover #music-aside li{
+    padding:12px 10px;
+    width: 210px;
+  }
+  .music-box .cover #music-aside li:hover{
+    background-color: green;
+  }
+  .music-box .header .icon,.music-box .footer .icon,.music-box .cover .icon-down-dir{
+    padding-left: 10px;
+    font-size: 26px;
+  }
+  .music-box .header .icon-info-circled-alt,.music-box .footer .switch{
+    float: right;
+    padding-right: 10px;
+  }
+  .clearfix:after{
+    content: '';
+    clear: both;
+    display: block;
+  }
+  .music-box .main{
+    text-align: center;
+    padding-bottom: 65px;
+  }
+  .music-box .music-ct .main .song-name{
+    padding-bottom: 20px;
+    font-size: 20px;
+    color: white;
+  }
+  .music-box .music-ct .main .play{
+    margin:0 auto;
+    font-size: 75px;
+  }
+  .music-box .music-ct .main #frame{
+    display: none;
+  }
+  .music-box .music-ct .main .icon-rewind-outline,.music-box .music-ct .main .icon-fast-fw-outline{
+    font-size: 31px;
+  }
+  .music-box .music-ct .main .lyric-space{
+    position: absolute;
+    padding-top: 10px;
+    width:100%;
+  }
+  .music-box .music-ct .footer{
+    padding-bottom: 15px;
+    font-size: 20px;
+  }
+  .music-box .footer .volumeBar{
+    position: absolute;
+    left: 50px;
+    top: 347px;
+    background-color: green;
+  }
+  .music-box .footer .volume{
+    background-color: #ccc;
+    opacity: 0.3;
+    width: 100px;
+    height: 4px;
+  }
+  .music-box .footer .progressBar{
+    position: absolute;
+    left: 22px;
+    top: 315px;
+    width: 0;
+    background-color: green;
+  }
+  .music-box .footer .progress{
+    background-color: #ccc;
+    opacity: 0.3;
+    width: 240px;
+    height: 4px;
+  }
+  .music-box .footer .progress-wrap{
+    padding-bottom: 30px;
+  }
