@@ -68,6 +68,7 @@ MusicPlug.prototype={
       $('body').append(plugHtml);
     },
     init:function($ct){
+      var _this=this;
       this.aside=$ct.find('.cover');
       this.iconMusic=$ct.find('.music-ct .icon-music');
       this.iconInfo=$ct.find('.icon-info-circled-alt');
@@ -87,8 +88,8 @@ MusicPlug.prototype={
       this.musicCt=$ct.find('.music-ct');
       // this.myAuto = $ct.find('#myaudio');
       $ct.find('#frame')[0].onload=function(){
-        this.myAuto = $ct.find('#frame').contents().find('#myaudio');
-        console.log(this.myAuto[0]);
+        _this.myAuto = $ct.find('#frame').contents().find('#myaudio');
+        console.log(_this.myAuto[0]);
       };
       this.lyricBtn=$ct.find('.icon-toggle-off');
       this.lyricSpa=$ct.find('.lyric-space');
