@@ -1,21 +1,22 @@
 function MusicPlug(){
   this.appendPlugHtml();
   $ct=$('#radio');
+  var _this=this;
   $ct.find('#frame')[0].onload=function(){
-    this.init($ct);
-    this.vol = 1.0;//默认音量为1.0
-    this.lyricBtn.status=false;//默认歌词关闭
-    this.playStatus=true;//默认显示播放按钮
-    this.voff=false//默认不显示静音按钮
-    this.firstPlay=true;//默认是第一次播放
-    this.box.showScreen=true;//默认显示主界面
-    this.bind();
-    this.loadAndPlace();
-    this.getSong();
-    this.drag(this.logo);
-    this.drag(this.box);
-  };
+    _this.init($ct);
+    _this.vol = 1.0;//默认音量为1.0
+    _this.lyricBtn.status=false;//默认歌词关闭
+    _this.playStatus=true;//默认显示播放按钮
+    _this.voff=false//默认不显示静音按钮
+    _this.firstPlay=true;//默认是第一次播放
+    _this.box.showScreen=true;//默认显示主界面
+    _this.bind();
+    _this.loadAndPlace();
+    _this.getSong();
+    _this.drag(_this.logo);
+    _this.drag(_this.box);
 
+  };
 }
 MusicPlug.prototype={
   appendPlugHtml:function(){
@@ -70,74 +71,70 @@ MusicPlug.prototype={
     +'</div>'
     $('body').append(plugHtml);
   },
-  init:function($ct){
-    var _this=this;
-    $ct.find('#frame')[0].onload=function(){
-     _this.aside=$ct.find('.cover');
-     _this.iconMusic=$ct.find('.music-ct .icon-music');
-     _this.iconInfo=$ct.find('.icon-info-circled-alt');
-     _this.infoRadio=$ct.find('.radioInfo');
-     _this.logo=$ct.find('.music-logo .icon-music');
-     _this.playBtn=$ct.find('.play');
-     _this.nextBtn=$ct.find('.icon-fast-fw-outline');
-     _this.iconVolume=$ct.find('.icon-volume');
-     _this.volume=$ct.find('.volume');
-     _this.volumeBar=$ct.find('.volumeBar');
-     _this.offVoice=$ct.find('.voff');
-     _this.progress=$ct.find('.progress');
-     _this.progressBar=$ct.find('.progressBar');
-     _this.iconlyric=$ct.find('.icon-toggle-off');
-     _this.channelList=$ct.find('#channels');
-     _this.box=$ct.find('.music-box');
-     _this.musicCt=$ct.find('.music-ct');
-        //  _this.myAuto = $ct.find('#myaudio');
-        _this.myAuto = $ct.find('#frame').contents().find('#myaudio');
-        _this.lyricBtn=$ct.find('.icon-toggle-off');
-        _this.lyricSpa=$ct.find('.lyric-space');
-        _this.songName=$ct.find('.song-name');
-        _this.playBtn=$ct.find('.play');
-      };
-
-    },
-    bind:function(){
-      var _this=this,
-      clock,
-      lyClock;
-      _this.iconInfo.on('mouseenter',function(){
-        _this.infoRadio.removeClass('hide');
-      });
-      _this.iconInfo.on('mouseleave',function(){
-        _this.infoRadio.addClass('hide');
-      });
-      _this.logo.on('click',function(){
-        if(_this.box.showScreen){
-          _this.box.hide('300');
-          _this.box.showScreen=false;
-        }else{
-          _this.box.show('300');
-          _this.box.showScreen=true;
-        }
-      });
-      _this.playBtn.on('click',function(){
+     init:function($ct){
+        this.aside=$ct.find('.cover');
+        this.iconMusic=$ct.find('.music-ct .icon-music');
+        this.iconInfo=$ct.find('.icon-info-circled-alt');
+        this.infoRadio=$ct.find('.radioInfo');
+        this.logo=$ct.find('.music-logo .icon-music');
+        this.playBtn=$ct.find('.play');
+        this.nextBtn=$ct.find('.icon-fast-fw-outline');
+        this.iconVolume=$ct.find('.icon-volume');
+        this.volume=$ct.find('.volume');
+        this.volumeBar=$ct.find('.volumeBar');
+        this.offVoice=$ct.find('.voff');
+        this.progress=$ct.find('.progress');
+        this.progressBar=$ct.find('.progressBar');
+        this.iconlyric=$ct.find('.icon-toggle-off');
+        this.channelList=$ct.find('#channels');
+        this.box=$ct.find('.music-box');
+        this.musicCt=$ct.find('.music-ct');
+        //  this.myAuto = $ct.find('#myaudio');
+        this.myAuto = $ct.find('#frame').contents().find('#myaudio');
+        this.lyricBtn=$ct.find('.icon-toggle-off');
+        this.lyricSpa=$ct.find('.lyric-space');
+        this.songName=$ct.find('.song-name');
+        this.playBtn=$ct.find('.play');
+      },
+      bind:function(){
+        var _this=this,
+        clock,
+        lyClock;
+        _this.iconInfo.on('mouseenter',function(){
+          _this.infoRadio.removeClass('hide');
+        });
+        _this.iconInfo.on('mouseleave',function(){
+          _this.infoRadio.addClass('hide');
+        });
+        _this.logo.on('click',function(){
+          if(_this.box.showScreen){
+            _this.box.hide('300');
+            _this.box.showScreen=false;
+          }else{
+            _this.box.show('300');
+            _this.box.showScreen=true;
+          }
+        });
+        _this.playBtn.on('click',function(){
         if(_this.firstPlay){   //第一次播放
           _this.play();
           _this.firstPlay=false;
         }
         _this.switchPlayBtn();
       });
-      _this.nextBtn.on('click',function(){
-        _this.playNext();
-      });
-      _this.iconMusic.on('mouseenter',function(){
-        _this.showAside();
-      });
-      _this.aside.on('mouseleave',function(){
-       _this.hideAside();
-     });
-      _this.channelList.on('click','li',function(){
-        _this.getSong();
-        _this.hideAside();
-      });
+        _this.nextBtn.on('click',function(){
+          _this.playNext();
+        });
+        _this.iconMusic.on('mouseenter',function(){
+          _this.showAside();
+        });
+        _this.aside.on('mouseleave',function(){
+         _this.hideAside();
+       });
+        _this.channelList.on('click','li',function(){
+          _this.getSong();
+          _this.hideAside();
+        });
       _this.volumeBar.on('mousedown', function(e) {  //静音与音量控制交互控制
        _this.vControl(e);
        if(_this.vol&&_this.voff){
