@@ -230,7 +230,7 @@ MusicPlug.prototype={
     },
     switchPlayBtn:function(){                     // 播放/暂停切换  播放键/暂停键切换
       if(this.playStatus){
-       // this.play();
+       this.play();
        this.showPauseBtn();
        this.playStatus=false;
      }else{
