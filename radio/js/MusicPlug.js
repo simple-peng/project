@@ -86,7 +86,7 @@ MusicPlug.prototype={
       this.box=$ct.find('.music-box');
       this.musicCt=$ct.find('.music-ct');
       // this.myAuto = $ct.find('#myaudio');
-      $('#frame')[0].onload=function(){
+      $ct.find('#frame')[0].onload=function(){
         this.myAuto = $ct.find('#frame').contents().find('#myaudio');
         console.log(this.myAuto[0]);
       };
