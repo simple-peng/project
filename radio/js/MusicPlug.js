@@ -87,6 +87,7 @@ MusicPlug.prototype={
       this.musicCt=$ct.find('.music-ct');
       // this.myAuto = $ct.find('#myaudio');
       this.myAuto = $ct.find('#frame').contents().find('#myaudio');
+      console.log(this.myAuto.get(0));
       this.lyricBtn=$ct.find('.icon-toggle-off');
       this.lyricSpa=$ct.find('.lyric-space');
       this.songName=$ct.find('.song-name');
