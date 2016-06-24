@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>居中布局</title>
+  <style>
+  body,html{
+    margin: 0;
+    padding: 0;
+  }
+    .container{
+      width: 900px;
+      margin: 0 auto;
+
+    }
+    #header{
+       height: 100px;
+      background-color: #ccc;
+    }
+    #content{
+
+    }
+    #content .container{
+      height: 400px;
+      background-color: pink;
+    }
+    #footer{
+      background-color: #ccc;
+      height: 50px;
+    }
+  </style>
+</head>
+<body>
+ <div id="header">
+   <div class="container">
+
+     头部内容
+   </div>
+ </div>
+  <div id="content">
+    <div class="container">
+      这里面放居中内容
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      这里是footer
+    </div>
+  </div>
+
+</body>
+</html>
