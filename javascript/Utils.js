@@ -1,4 +1,3 @@
-<meta charset="UTF-8">
 var Utils = {
     /* ajax的封装*/
     ajax: function(opts) {
