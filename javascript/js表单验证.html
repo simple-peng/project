@@ -1,246 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <title>表单验证</title>
-  <style type="text/css">
-   * {
-    box-sizing: border-box;
-  }
-  body {
-    font-size: 14px;
-  }
-  .register{
-    margin: 30px;
-  }
-  .register-ct dd {
-    margin-left: 86px;
-  }
-  .register-ct dt {
-    width: 86px;
-    float: left;
-    height: 24px;
-    line-height: 24px;
-  }
-  .register-ct input {
-    height: 24px;
-    line-height: 24px;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  .register-ct input.error{
-    border-color: red;
-  }
-  .register-ct .msg{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #aaa;
-    height: 12px;
-    font-size: 12px;
-  }
-</style>
+  <style>
+    .register{
+      margin: 20px 30px;
+    }
+    .note{
+      margin: 8px 110px;
+      height: 12px;
+      font-size: 12px;
+      color: #aaa;
+    }
+    input{
+      margin-left: 20px;
+    }
+    #name{
+      margin-left: 36px;
+    }
+    #pwd{
+      margin-left: 50px;
+    }
+    #submit{
+      margin: 0 110px;
+    }
+    .warning{
+      border-color: red;
+    }
+  </style>
 </head>
 <body>
   <div class="register">
-    <h3>注册</h3>
-    <form id="register-form" action="">
-      <dl class="register-ct">
-        <dt>用户名</dt>
-        <dd>
-          <input id="username" type="text" placeholder="用户名(hunger被注册过)">
-        </dd>
-        <dd class="msg msg-un">只能是字母、数字、下划线，3-10个字符</dd>
-
-        <dt>密码:</dt>
-        <dd>
-          <input type="password" id="password1" placehoder="密码">
-        </dd>
-        <dd class="msg msg-pwd1">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
-
-        <dt> 在输一次:</dt>
-        <dd>
-          <input type="password" id="passowrd2" placeholder="在输入一次密码">
-        </dd>
-        <dd class="msg msg-pwd2"></dd>
-        <dd><button id="btn-register">注册</button></dd>
-      </dl>
-    </form>
-
+    <p><strong>注册</strong></p>用户名：
+    <input name="username" id="name" type="text" placeholder="用户名(hunger已被注册过)"><br>
+    <p class="name-note note">只能是字母、数字、下划线，3-10个字符</p>密码：   
+    <input name="pwd" id="pwd" type="text"><br>
+    <p class="pwd-note note">大写字母、小写、数字、下划线最少两种，6-15个字符</p>再输一次：
+    <input name="again" id="again" type="text" placeholder="请再输入一次密码"><br>
+    <p class="again-note note"></p>
+    <input type="submit" id="submit" value="注册">
   </div>
 
-  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
-  <script type="text/javascript">
-    var username=document.getElementById('username').value;
-    var msgUn=document.getElementsByClassName('msg-un')[0].value;
-    var pwd1=document.getElementById('password1').value;
-    var msg1Pwd=document.getElementsByClassName('msg-pwd1')[0].value;
-    var pwd2=document.getElementById('passowrd2').value;
-    var msg2Pwd=document.getElementsByClassName('msg-pwd2')[0].value;
-
-     var MSG = {
-      'USERNAME_EXIST': '用户名已经存在',
-      'USERNAME_TYPE_ERROR': '用户名格式不正确',
-      'USERNAME_USEABLE': '用户名可用',
-      'PASSWORD_TYPE_ERROR': '密码格式不正确',
-      'PASSWORD_NOT_MATCH': '两次密码输入不一致'
-    };
-
-    document.getElementById('username').addEventListener('click',function(){
-      testUnUseage()&&testUn();
-    });
-    document.getElementById('password1').addEventListener('click',function(){
-      test1Pwd();
-    });
-    document.getElementById('passowrd2').addEventListener('click',function(){
-      test2Pwd();
-    });
-    document.getElementById('btn-register').addEventListener('click',function(){
-      e.preventDefault();
-      if( testUn() && testPwd1() && testPwd2() ){
-        testUnUseage(function(canUse){
-          if(canUse){
-            alert('正在注册');
-            console.log('正在注册...')
-          }
-        })
+  <script>
+    var userName =document.getElementById('name');
+    var nameNote=document.getElementsByClassName('name-note')[0];
+    var pwd=document.getElementById('pwd');
+    var pwdNote=document.getElementsByClassName('pwd-note')[0];
+    var again=document.getElementById('again');
+    var againNote=document.getElementsByClassName('again-note')[0];
+    var submit=document.getElementById('submit');
+    var doing=false;
+    pwd.addEventListener('blur',checkPwd,false);
+    again.addEventListener('blur',compare,false);
+    userName.addEventListener('blur',function(){ajax({
+      url: 'get.php',
+      method: 'get',
+      data: {
+        username:userName.value
+      },
+      pre: function(){
+        return (checkName());
+      },
+      success: function(ret){
+        doing=false;
+        console.log(ret);
+        console.log(ret==="false");
+        console.log(ret==="true");
+        if(ret==="false"){
+          nameNote.innerText="用户名可用";
+          removeClass(userName,'warning');
+        };
+        if(ret==="true") {
+          nameNote.innerText="用户名已经存在 请重新输入";
+          addClass(userName,'warning');
+        };
+      },
+      error: function(){
+        alert('服务器出错了');
       }
-    });
-
-
-    //检查用户名是否被占用
-    function testUnUseage(handle){
-     ajax({
-        url: '/form',   //接口地址
-        type: 'post',               // 类型， post 或者 get,
-        data: {
-          username: username
+    })},false);
+    submit.addEventListener('click',function(){ajax({                 // e.preventDefault();
+      url: 'get.php',
+      method: 'get',
+      data: {
+        username: userName.value,
+        pwd: pwd.value
+      },
+      pre: function (){
+        return ((!hasClass(userName,'warning')&&checkPwd()&&compare()&&checkName()));},
+        success: function(ret){ 
+          if(ret==='false')
+            submit.value='注册中';
+          alert('正在注册');
         },
-        dataType:'json',
-        success: function(ret){
-          console.log('1');
-         if (ret.status==1&&ret.msg_type==='USERNAME_EXIST'){
-          $('#username').addClass('error');
-          $('.msg-un').innerText('MSG.USERNAME_EXIST');
-          handle&&handle(false);
+        error: function(){
+          alert('服务器出错了');
         }
-        else if(ret.status==0){
-          $('#username').removeClass('error');
-          $('.msg-un').innerText('MSG.USERNAME_USEABLE');
-          handle&&handle(true);
-      }       // {status: 0}
-    },
-    error: function(){
-     alert('接口异常');
-   }
- })
-   }
-
-
-   function testUn(){
-    if (!isLegalUsername(username)){
-      $('#username').addClass('error');
-      $('.msg-un').innerText('MSG.USERNAME_TYPE_ERROR');
-      return false;
-    }else{
-      $('#username').removeClass('error');
-      $('.msg-un').innerText('MSG.USERNAME_USEABLE');
-      return true;
-    }
-   }
-
-   function test1Pwd(){
-    if (!isLegalPassword(pwd1)){
-      $('#username').addClass('error');
-      $('.msg-un').innerText('MSG.PASSWORD_TYPE_ERROR');
-      return false;
-    }else{
-     $('#username').removeClass('error');
-     $('.msg-un').innerText(' ');
-     return true;
-   }
-
- }
-
- function test2Pwd(){
-  if (pw1!==pwd2){
-    $('#username').addClass('error');
-    $('.msg-un').innerText('MSG.PASSWORD_NOT_MATCH');
-    return false;
-  }else{
-   $('#username').removeClass('error');
-   $('.msg-un').innerText(' ');
-   return true;
- }
-
-}
-
+      });
+  },false);
     function ajax(opts){
-      var xmlHttp=new XMLHttpRequest();
-      var str='';
-      for(k in opts.data){
-        str += k+'='+opts.data[k]+'&';
+      if(opts.pre()===false){
+        return;
       }
-      str=str.substr(0,str.length-1);
-
-      if (opts.type.toLowerCase()==='get') {
-        xmlHttp.open('GET',opts.url+'?'+str,true);
-        xmlHttp.send();
+      doing=true;
+      var str="";
+      var request = new XMLHttpRequest();
+      for (var i in opts.data){
+        str += i+'='+opts.data[i]+'&';
       }
-      if (opts.type.toLowerCase()==='post') {
-        xmlHttp.open('POST',opts.url,true);
-        xmlHttp.setRequestHeader('content-type','application/x-www-form-urlencoded');
-        xmlHttp.send(str);
+      str = str.substr(0,str.length-1);
+      if(opts.method === 'get'){
+        request.open('get',opts.url+'?'+str,true);
+        request.send();
       }
-      xmlHttp.onreadystatechange=function(){
-        if (xmlHttp.readyState===4&&xmlHttp.status===200) {
-          var responsetext =JSON.parse(xmlHttp.responseText);
-          opts.success(responsetext);
+      if(opts.method === 'post'){
+        request.open('post',opts.url,true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        console.log(str);
+        request.send(str);
+      }
+      request.onreadystatechange=function(){
+        if(request.readyState===4 && request.status===200){
+          var ret=JSON.parse(request.responseText);
+          opts.success(ret);
         }
-        if (xmlHttp.readyState===4&&xmlHttp.status===404) {
+        if(request.status!==200){
           opts.error();
         }
       }
     }
-
-    // var username=$('#username').val();
-    // var msgUn=$('.msg-un').val();
-    // var pwd1=$('#password1').val();
-    // var msg1Pwd=$('.msg-pwd1').val();
-    // var pwd2=$('#password2').val();
-    // var msg2Pwd=$('.msg-pwd2').val();
-
-    //  var MSG = {
-    //   'USERNAME_EXIST': '用户名已经存在',
-    //   'USERNAME_TYPE_ERROR': '用户名格式不正确',
-    //   'USERNAME_USEABLE': '用户名可用',
-    //   'PASSWORD_TYPE_ERROR': '密码格式不正确',
-    //   'PASSWORD_NOT_MATCH': '两次密码输入不一致'
-    // };
-
-    // $('#username').on('click', function(){
-    //   testUnUseage()&&testUn();
-    // });
-    // $('#password1').on('click', function(){
-    //   test1Pwd();
-    // });
-    // $('#password2').on('click', function(){
-    //   test2Pwd();
-    // });
-    // $('#btn-register').on('click', function(e){
-    //   e.preventDefault();
-    //   if( testUn() && testPwd1() && testPwd2() ){
-    //     testUnUseage(function(canUse){
-    //       if(canUse){
-    //         alert('正在注册');
-    //         console.log('正在注册...')
-    //       }
-    //     })
-    //   }
-    // });
-
-
+    function checkName(){
+      if(/^\w{3,10}$/.test(userName.value)){
+        nameNote.innerText='';
+        removeClass(userName,'warning');
+        return true;
+      }else {
+        nameNote.innerText='用户名格式不正确 请重新输入';
+        addClass(userName,'warning');
+        return false;          
+      }
+    }
+    function checkPwd(){
+      var i=0;
+      if(/^\w{6,15}$/.test(pwd.value)){
+        if(/[a-z]/.test(pwd.value)){
+          i++;
+        };
+        if(/[A-Z]/.test(pwd.value)){
+          i++
+        };
+        if(/[0-9]/.test(pwd.value)){
+          i++
+        };
+        if(/_/.test(pwd.value)){
+          i++
+        };
+        if(i>1){
+          removeClass(pwd,'warning');
+          pwdNote.innerText='';
+          return true;
+        }else {
+          pwdNote.innerText='密码格式不正确 请重新输入';
+          addClass(pwd,'warning');
+          return false;
+        }
+      }else {
+        addClass(pwd,'warning');
+        pwdNote.innerText='密码格式不正确 请重新输入';
+        return false;
+      }
+    }
+    function compare(){
+      if(pwd.value!==again.value){
+        addClass(again,'warning');
+        againNote.innerText='两次密码不一致 请重新输入';
+        return false;
+      }else {
+        removeClass(again,'warning');
+        againNote.innerText='';
+        return true;
+      }
+    }
+    function hasClass(el, cls){
+      var regex=new RegExp('\\b'+cls+'\\b','g');
+      return regex.test(el.className);
+    }
+    function addClass(el, cls){
+      if(hasClass(el,cls)===false){
+        el.className += " "+cls;
+      }
+    }
+    function removeClass(el,cls){
+      if(hasClass(el,cls)===true){
+        var regex=new RegExp('\\b'+cls+'\\b','g');
+        el.className=el.className.replace(regex,"");
+        el.className=el.className.replace(/\s{2}/g," ");
+      }
+    }
   </script>
-
 </body>
 </html>
