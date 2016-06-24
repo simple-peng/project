@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>portfolio</title>
+  <link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
+  <style type="text/css">
+   body,html,ul,li{
+    margin: 0;
+    padding: 0;
+  }
+  a{
+    text-decoration: none;
+  }
+  h4{
+    font-size: 18px;
+  }
+  ul,li{
+    list-style: none;
+  }
+  .layout {
+    width: 900px;
+    margin:0 auto;
+    /*background-color: pink;*/
+  }
+  #header{
+    background-color: #ADD8E6;
+  }
+  #header .nav{
+    position: relative;
+    left: 460px;
+    padding: 15px;
+    line-height: 30px;
+    color: #444;
+  }
+  #header .nav li{
+    float: left;
+    padding: 15px 20px;
+    font-size: 15px;
+    background-color: rgba(255,255,255,.4);
+  }
+  #header .nav li a{
+    color: #444;
+  }
+  .float{
+    float: left;
+  }
+  .clearfix:after{
+    content: '';
+    clear: both;
+    display: block;
+  }
+  #header .layout p{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  #content{
+    margin: 50px 0;
+  }
+  .gray-btn{
+    color: white;
+    background: rgba(0,0,0,0.4);
+    font-size: 18px;
+    padding: 10px 16px;
+  }
+  .gray-btn:hover{
+   background: #000;
+ }
+ #our-work,#footer{/*水平居中*/
+  text-align: center;
+  padding: 50px 0;
+}
+hr.small{
+  max-width:100px;
+}
+#our-work{
+  background-color: #f7f7f7;
+}
+#our-work p{
+  font-size: 30px;
+}
+
+#our-work .work-box p{
+  font-size: 16px;
+  font-style: italic;
+  color: #777;
+}
+#our-work img{
+  width: 285px;
+}
+#our-work hr.small,#footer hr.small{
+  opacity: 0.2;
+}
+#our-work .gray-btn{
+  clear: both;
+  font-size: 13px;
+}
+#our-work .work-box{
+  margin:15px -8px;
+}
+#our-work .work-box>li{
+  margin: 15px 0 15px 15px;
+  /*height: 100px;*/
+  background-color: white;
+}
+#our-work .work-box .plotct,#our-work .work-box .modal,#our-work .work-box .carousel,#our-work .work-box .stickup{
+  position: relative;
+}
+#our-work .work-box .plotct .child{
+  position: absolute;
+  top: 45%;
+  left: 66%;
+  display: none;
+}
+#our-work .work-box .modal .child{
+  position: absolute;
+  top: 78%;
+  left: 75%;
+  display: none;
+}
+#our-work .work-box .carousel .child{
+  position: absolute;
+  top: 70%;
+  left: 65%;
+  display: none;
+}
+#our-work .work-box .stickup .child{
+  position: absolute;
+  top: 80%;
+  left: 65%;
+  display: none;
+}
+#our-work .work-box .plotct:hover .child,#our-work .work-box .modal:hover .child,#our-work .work-box .carousel:hover .child,#our-work .work-box .stickup:hover .child{
+  display: block;
+}
+#our-work .work-box .child li{
+  padding: 3px 0;
+  background-color: #ADD8E6;
+}
+#our-work .work-box .child a:hover{
+  color: white;
+}
+#our-work .work-box .child li a{
+  color: #444;
+}
+#footer{
+  background-color: #ADD8E6;
+}
+#footer .icon{
+  font-size: 65px;
+  color: #444;
+  /*-webkit-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;*/
+}
+#footer p{
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+  <div id="header">
+    <div class="layout">
+     <ul class="nav clearfix">
+       <li><a href="#">HOME</a></li>
+       <li><a href="#">PORTFOLIO</a></li>
+       <li><a href="https://simple-peng.github.io/">BLOG</a></li>
+       <li><a href="cv.html">ABOUT</a></li>
+       <li><a href="#">CONTACT</a></li>
+     </ul>
+   </div>
+ </div>
+
+ <div id="content" >
+  <!-- our-work -->
+  <div id="our-work" class="layout">
+    <p>Latest Portfolio</p>
+    <hr class="small">
+    <ul class="work-box clearfix">
+      <li class="float plotct">
+        <a href="#"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>HTML/CSS</h4>
+        <a href="#"><p>常见布局</p></a>
+        <ul class="child">
+          <li><a href="http://book.jirengu.com/simple-peng/project/layout/%E5%B1%85%E4%B8%AD%E5%B8%83%E5%B1%80.html">居中布局</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/layout/%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80.html">两栏布局</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/layout/%E6%B7%B7%E5%90%88%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80.html">混合三栏布局</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/layout/%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%AE%9E%E7%8E%B0%E4%B8%89%E6%A0%8F.html">双飞翼三栏布局</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/layout/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E4%B8%89%E6%A0%8F.html">圣杯三栏布局</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/layout/%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%AE%9E%E7%8E%B0%E4%B8%A4%E6%A0%8F%E5%B8%83%E5%B1%80.html">双飞翼改两栏</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/layout/%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80%E5%AE%9E%E7%8E%B0%E4%B8%A4%E6%A0%8F.html">圣杯改两栏</a></li>
+        </ul>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/websiteDemo/personalWebsite.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>HTML/CSS</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/websiteDemo/personalWebsite.html"><p>个人站Demo</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/websiteDemo/enterpriseWebsite.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>HTML/CSS</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/websiteDemo/enterpriseWebsite.html"><p>企业站Demo</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/javascript/Utils.js"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JavaScript</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/javascript/Utils.js"><p>封装-源码</p></a>
+      </li>
+      <!-- <li class="float">
+        <a href="#"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JavaScript</h4>
+        <a href="#"><p>轮播</p></a>
+      </li> -->
+      <li class="float modal">
+        <a href="#"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JavaScript</h4>
+        <a href="#"><p>modal模态框</p></a>
+        <ul class="child">
+          <li><a href="http://book.jirengu.com/simple-peng/project/javascript/js-%E6%A8%A1%E6%80%81%E6%A1%86-%E5%8A%A0cover.html">法一</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/javascript/js-%E6%A8%A1%E6%80%81%E6%A1%86%EF%BC%8D%E5%8A%A0cover%E6%B3%952.html">法二</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/javascript/js-%E6%A8%A1%E6%80%81%E6%A1%86-%E5%8A%A0cover%E6%B3%953.html">法三</a></li>
+        </ul>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/javascript/js-tabs%E5%88%87%E6%8D%A2.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JavaScript</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/javascript/js-tabs%E5%88%87%E6%8D%A2.html"><p>tab切换</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/javascript/js-%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JavaScript</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/javascript/js-%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A.html"><p>加载更多</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/javascript/js%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JavaScript</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/javascript/js%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81.html"><p>表单验证</p></a>
+      </li>
+      <li class="float carousel">
+        <a href="#"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JQuery</h4>
+        <a href="#"><p>轮播</p></a>
+        <ul class="child">
+          <li><a href="http://book.jirengu.com/simple-peng/project/jQuery/jq-%E6%B8%90%E5%8F%98%E8%BD%AE%E6%92%AD.html">渐变轮播</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/jQuery/jq-%E5%88%87%E6%8D%A2%E8%BD%AE%E6%92%AD%E4%B8%8D%E6%94%B9%E5%8F%98dom%E9%A1%BA%E5%BA%8F.html">切换轮播</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/jQuery/jq-%E5%85%A8%E5%B1%8F%E8%BD%AE%E6%92%AD.html">全屏轮播</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/jQuery/jq-%E4%B8%89%E6%B8%90%E5%8F%98%E8%BD%AE%E6%92%AD.html">三轮播</a></li>
+        </ul>
+      </li>
+      <li class="float stickup">
+        <a href="#"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JQuery</h4>
+        <a href="#"><p>stickup</p></a>
+         <ul class="child">
+          <li><a href="http://book.jirengu.com/simple-peng/project/jQuery/jq-%E5%AF%BC%E8%88%AA%E6%9D%A1stickup.html">单个导航条</a></li>
+          <li><a href="http://book.jirengu.com/simple-peng/project/jQuery/jq-%E5%A4%9A%E4%B8%AA%E5%AF%BC%E8%88%AA%E6%9D%A1stickup.html">多个导航条</a></li>
+        </ul>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jquery%E5%B8%B8%E8%A7%81%E6%95%88%E6%9E%9C-%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JQuery</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jquery%E5%B8%B8%E8%A7%81%E6%95%88%E6%9E%9C-%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD.html"><p>懒加载</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jquery%E5%B8%B8%E8%A7%81%E6%95%88%E6%9E%9C-%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JQuery</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jquery%E5%B8%B8%E8%A7%81%E6%95%88%E6%9E%9C-%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8.html"><p>回到顶部</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jquery%E5%B8%B8%E8%A7%81%E6%95%88%E6%9E%9C-%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JQuery</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jquery%E5%B8%B8%E8%A7%81%E6%95%88%E6%9E%9C-%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8.html"><p>无限滚动</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jq-%E7%80%91%E5%B8%83%E6%B5%81%E5%B8%83%E5%B1%80.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JQuery</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jq-%E7%80%91%E5%B8%83%E6%B5%81%E5%B8%83%E5%B1%80.html"><p>瀑布流布局</p></a>
+      </li>
+       <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jquery-%E6%97%A0%E9%99%90%E5%8A%A0%E8%BD%BD+jsonp+%E7%80%91%E5%B8%83%E6%B5%81.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>JQuery</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/jQuery/jquery-%E6%97%A0%E9%99%90%E5%8A%A0%E8%BD%BD+jsonp+%E7%80%91%E5%B8%83%E6%B5%81.html"><p>无限加载+jsonp+瀑布流</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/oop/35-%E5%AF%B9%E8%B1%A1-%E8%BD%AE%E6%92%AD.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>oop</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/oop/35-%E5%AF%B9%E8%B1%A1-%E8%BD%AE%E6%92%AD.html"><p>轮播</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/oop/35-%E5%AF%B9%E8%B1%A1-Tab%20%E5%88%87%E6%8D%A2.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>oop</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/oop/35-%E5%AF%B9%E8%B1%A1-Tab%20%E5%88%87%E6%8D%A2.html"><p>tab切换</p></a>
+      </li>
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/oop/37-dialog%E5%BC%B9%E7%AA%97%E5%8A%9F%E8%83%BD.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>oop</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/oop/37-dialog%E5%BC%B9%E7%AA%97%E5%8A%9F%E8%83%BD.html"><p>dialog弹窗</p></a>
+      </li>
+       <!-- <li class="float">
+        <a href="#"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>CSS3</h4>
+        <a href="#"><p>动画</p></a>
+      </li> -->
+      <li class="float">
+        <a href="http://book.jirengu.com/simple-peng/project/radio/FMRadio.html"><img src="./img/roundicons.png" alt="roundicons"></a>
+        <h4>HTML5</h4>
+        <a href="http://book.jirengu.com/simple-peng/project/radio/FMRadio.html"><p>音乐电台</p></a>
+      </li>
+    </ul>
+    <!-- <a class="gray-btn" href="#">View More Items</a> -->
+  </div>
+
+</div>
+
+<div id="footer">
+  <div class="layout">
+    <div><a href="#"><span class="icon icon-up-circle"></span></a></div>
+    <p>Copyright &copy PingtingPeng All Rights Reserved 2016</p>
+  </div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+  // $('a').on('click',function(e){
+  //   e.preventDefault();
+  // })
+</script>
+</body>
+</html>
