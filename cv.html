@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cv</title>
+  <link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
+  <style type="text/css">
+    body,html,ul,li{
+      margin: 0;
+      padding: 0;
+      background-color: #ADD8E6;
+
+    }
+    a{
+      text-decoration: none;
+      color: red;
+    }
+    .container{
+      width: 900px;
+      margin: 0 auto;
+      /*background-color: pink;*/
+    }
+    #header,#footer{
+      color: white;
+    }
+    #header .nav{
+      position: relative;
+      left: 460px;
+      margin:15px;
+      line-height: 30px;
+    }
+    #header .nav li{
+      float: left;
+      padding: 15px 20px;
+      list-style: none;
+      background-color: rgba(255,255,255,.4);
+      font-size: 15px;
+    }
+    #header .nav li a{
+      color: #444;
+    }
+    .float{
+      float: left;
+    }
+    .clearfix:after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+    .author {
+      display: inline-block;
+      width: 7.875em;
+      height: 7.875em;
+      margin: 0 auto;
+      background: no-repeat url("./img/author.jpg") left top;
+      -webkit-background-size: 10.875em 10.875em;
+      -moz-background-size: 10.875em 10.875em;
+      background-size: 10.875em 10.875em;
+      -webkit-border-radius: 5.4375em;
+      border-radius: 5.4375em;
+      -webkit-transition: -webkit-transform 2s ease-out;
+      -moz-transition: -moz-transform 2s ease-out;
+      -o-transition: -o-transform 2s ease-out;
+      -ms-transition: -ms-transform 2s ease-out;
+      transition: transform 2s ease-out;
+    }
+    .item{
+      padding-left: 10px;
+      color: #fff;
+      background-color: #404042;
+      line-height: 35px;
+      border-radius: 5px;
+    }
+    #content{
+      margin-bottom: 50px;
+    }
+    #content .main{
+      float:left;
+      width: 500px;
+    }
+    .main .experience a{
+      color: black;
+    }
+    .main .experience a:hover{
+      color: red;
+    }
+    #content .aside{
+      float: left;
+      margin-left:40px;
+      width: 260px;
+    }
+    #content .aside .wrap .icon,#content .aside .wrap strong,#content .aside .wrap p,#content .main .wrap p,#content .main .wrap strong{
+      padding-left: 10px;
+      font-size: 12px;
+      line-height: 25px;
+    }
+    #content .main .wrap p{
+      font-size: 13px;
+    }
+    #content .aside .wrap .icon{
+      color: black;
+    }
+    #content .aside .wrap .skillbar{
+      float:right;
+      width: 180px;
+      height: 10px;
+      background-color: #354042;
+      border-radius: 3px;
+    }
+    #content .aside .wrap .skill p{
+      line-height: 15px;
+    }
+    #content .aside .wrap .bar{
+      height: 10px;
+      background-color: white;
+      border-radius: 3px;
+    }
+    #content .aside .wrap .bar1{
+      width: 85%;
+    }
+    #content .aside .wrap .bar2{
+      width: 75%;
+    }
+    #content .aside .wrap .bar3{
+      width: 70%;
+    }
+    #content .aside .wrap .bar4{
+      width: 75%;
+    }
+    p{
+      font-size: 12px;
+    }
+    #footer{
+      padding:50px 0;
+      text-align: center;
+    }
+    #footer .icon{
+      font-size: 65px;
+      color: #444;
+     /* -webkit-transition: background .3s ease-in-out;
+     transition: background .3s ease-in-out;*/
+   }
+   #footer p{
+    font-size: 14px;
+  }
+
+</style>
+</head>
+<body>
+  <div id="header">
+   <div class="container">
+     <ul class="nav clearfix">
+       <li><a href="#">HOME</a></li>
+       <li><a href="http://book.jirengu.com/simple-peng/project/portfolio/portfolio.html">PORTFOLIO</a></li>
+       <li><a href="https://simple-peng.github.io/">BLOG</a></li>
+       <li><a href="#">RESUME</a></li>
+       <li><a href="#">CONTACT</a></li>
+     </ul>
+     <!-- <div class="text-wrap"> -->
+     <div class="author-info">
+       <div class="author"></div>
+       <h1>彭娉婷&nbsp&nbsp求职意向:web前端开发</h1>
+       <!-- <h2>Front-End Developer</h2> -->
+     </div>
+     <!-- </div> -->
+   </div>
+ </div>
+ <div id="content">
+   <div class="container clearfix">
+     <div class="main clearfix">
+      <h3 class="item">skill.职业技能</h3>
+      <div class="wrap">
+        <p>1.熟悉html,css，掌握盒模型，浮动，定位，BFC等核心概念，掌握常见布局方式</p>
+        <p>2.熟悉html书写规范，对代码的可读性、规范性有一定认识，对浏览器的兼容有一定的处理经验，能熟练开发出符合w3c规范的常用页面</p>
+        <p>3.熟悉原生javascript的使用，掌握事件模型，dom操作，ajax，jsonp,跨域，闭包，原型链，继承等相关概念的原理和使用方法</p>
+        <p>4.能用原生javascript封装通用函数库，实现诸如轮播，modal模态框，tab切换，加载更多，表单验证，ajax等效果</p>
+        <p>5.熟悉jQuery的使用，熟练使用jQuery开发常见页面的效果，比如轮播，stickup，懒加载，瀑布流布局等，并将其封装成jQuery插件</p>
+        <p>6.能熟练进行对象化编程,熟练掌握对象，原型，原型链，继承，跨域，jsonp，http等相关概念</p>
+        <p>7.熟悉sublime,git等前端相关工具的使用</p>
+        <p>8.熟悉linux常用命令</p>
+        <p>9.熟悉互联网产品前端开发流程，前后端协同开发流程</p>
+        <p>10.超强的自学能力，对前端浓厚的兴趣、毅力</p>
+      </div>
+      <h3 class="item">project.项目经验</h3>
+      <div class="wrap">
+        <h5>1.html/css的运用&nbsp&nbsp<a href="http://book.jirengu.com/simple-peng/project/portfolio/portfolio.html?#HTMLCSS">查看DEMO</a>&nbsp&nbsp<a href="https://github.com/simple-peng/project/tree/master/HTML%26CSS">查看源码</a></h5>
+        <p>运用html/css制作布局，其中应用了浮动，负margin,定位等知识点，运用html/css制作了个人站，企业站，运用css绘制三角形等</p>
+        <h5>2.原生js的封装和效果实现&nbsp&nbsp<a href="http://book.jirengu.com/simple-peng/project/portfolio/portfolio.html?#JavaScript">查看DEMO</a>&nbsp&nbsp<a href="https://github.com/simple-peng/project/tree/master/javascript">查看源码</a></h5>
+        <p>将原生js常用的几个方法，如ajax，class操作，邮箱、手机号、用户名、密码验证，时间日期的操作等进行了封装，集成到一个对象中，
+          通过调用对象的方法进行使用</p>
+          <p>用原生js实现轮播，modal模态框，tab切换，加载更多，表单验证，ajax等效果</p>
+          <h5>3.jQuery实现常见效果，并封装成插件&nbsp&nbsp<a href="http://book.jirengu.com/simple-peng/project/portfolio/portfolio.html?#jQuery">查看DEMO</a>&nbsp&nbsp<a href="https://github.com/simple-peng/project/tree/master/jQuery">查看源码</a></h5>
+          <p>使用jQuery实现了轮播、stickup、懒加载、回到顶部、瀑布流布局等效果，并将它们封装成插件，方便调用</p>
+          <h5>4.面向对象编程&nbsp&nbsp<a href="http://book.jirengu.com/simple-peng/project/portfolio/portfolio.html?#oop">查看DEMO</a>&nbsp&nbsp<a href="https://github.com/simple-peng/project/tree/master/oop">查看源码</a></h5>
+          <p>用创建对象的方式实现了轮播、tab切换、dialog 弹窗功能等效果</p>
+          <h5>5.HTML5音乐电台制作&nbsp&nbsp<a href="http://book.jirengu.com/simple-peng/project/portfolio/portfolio.html?#HTML5">查看DEMO</a>&nbsp&nbsp<a href="https://github.com/simple-peng/project/tree/master/radio">查看源码</a></h5>
+          <p>根据HTML5标签&ltaudio&gt,运用html,css及icon制作了播放器的主界面和侧边栏，ajax配合通过豆瓣接口获取频道列表，歌曲以及歌词信息制作了音乐电台，具有频道选择，播放下一曲，循环播放，进度可调，音量调节，歌词同步显示等功能，界面简洁优美，简单易用，且最终把代码进行对象封装，用户只需引入一个js文件即可在页面生成音乐电台</p>
+          <h5>6.个人博客的搭建&nbsp&nbsp<a href="https://simple-peng.github.io/">查看博客</a></h5>
+          <p>利用github pages+hexo搭建了个人博客，记录对技术的学习总结与思考</p>
+        </div>
+        <h3 class="item">work.工作经验</h3>
+        <div class="wrap experience">
+          <strong><a href="http://www.weidian.com/">微店(杭州)</a>&nbsp&nbsp2015.07-2016.04&nbsp&nbsp后端开发实习</strong>
+          <p>一直以来对前端可视化的编程方式就有天然浓厚的兴趣，同时在技术上渴望追求工匠精神，后来进入互联网行业近距离接触了前端，在和前端前辈交流的过程中了解了前端开发工作内容，止不住想要成为一名前端开发人员的心情，为了更快的达到心中所想，在今年4月份投身前端，通过网络、书籍、视频，不断的学习总结与练习巩固，怀着热情一路走来，希望能实现我的前端梦！</p>
+        </div>
+
+      </div>
+      <div class="aside clearfix">
+        <h3 class="item">联系我</h3>
+        <div class="wrap">
+          <div><a href="#"><span class="icon icon-user">&nbsp&nbsp年龄：25岁</span></a></div>
+          <div><a href="#"><span class="icon icon-mail-alt">&nbsp&nbsppingtingpeng@163.com</span></a></div>
+          <div><a href="#"><span class="icon icon-phone">&nbsp&nbsp13655817210</span></a></div>
+          <div><a href="#"><span class="icon icon-qq">&nbsp&nbsp1059019068</span></a></div>
+          <div><a href="#"><span class="icon icon-file-pdf"></span></a></div>
+        </div>
+
+        <h3 class="item">教育背景</h3>
+        <div class="wrap">
+          <strong>研究生&nbsp&nbsp昆明理工大学&nbsp&nbsp&nbsp2012.09-2015.07</strong>
+          <p>方向:计算机图像处理</p>
+          <strong>本科&nbsp&nbsp湖南师范大学&nbsp&nbsp&nbsp2008.09-2012.07</strong>
+          <p>方向:通信工程</p>
+        </div>
+
+        <h3 class="item">AWARDS</h3>
+        <div class="wrap">
+          <p>2008-2009  湖南师范大学奖学金</p>
+          <p>2008-2009  湖南师范大学三好学生</p>
+          <p>2008-2009  湖南师范大学第五届创业大赛三等奖</p>
+          <p>2013-2014  昆明理工大学优秀研究生</p>
+          <p>2013-2014  昆明理工大学奖学金</p>
+        </div>
+
+        <h3 class="item">专业技能</h3>
+        <div class="wrap clearfix">
+         <div class="skill">
+          <div class="skillbar">
+            <div class="bar bar1"></div>
+          </div>
+          <p>html
+            <div class="skillbar">
+              <div class="bar bar2"></div>
+            </div>
+          </p>
+          <p>css</p>
+          <div class="skillbar">
+            <div class="bar bar3"></div>
+          </div>
+          <p>javaScript</p>
+          <div class="skillbar">
+            <div class="bar bar4"></div>
+          </div>
+          <p>jQuery</p>
+        </div>
+        <div class="skill-box">
+          <div class="line line2"></div>
+        </div>
+      </div>
+
+      <h3 class="item">兴趣爱好</h3>
+      <div class="wrap">
+        <p>*英语六级，能流畅阅读以及翻译英文专业书籍、文档及其他英文资料</p>
+        <p>*浪迹于github、stack overflow、quora、segmentfault、知乎等国内外程序员知识社区</p>
+        <p>*爱运动、爱电影</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div class="container">
+    <div><a href="#"><span class="icon icon-up-circle"></span></a></div>
+    <p>Copyright &copy PingtingPeng All Rights Reserved 2016</p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(window).on('resize',function(){
+
+  })
+</script>
+
+</body>
+</html>
