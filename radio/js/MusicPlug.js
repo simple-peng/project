@@ -122,8 +122,16 @@ MusicPlug.prototype={
         }
         _this.switchPlayBtn();
       });
+        // _this.nextBtn.on('click',function(){
+        //   _this.playNext();
+        // });
         _this.nextBtn.on('click',function(){
-          _this.playNext();
+          if(_this.firstPlay){
+            _this.playNext();
+          }else{
+            _this.playNext();
+            _this.switchPlayBtn();
+          }
         });
         _this.iconMusic.on('mouseenter',function(){
           _this.showAside();
@@ -242,7 +250,7 @@ MusicPlug.prototype={
     playNext:function(){     //下一曲
       this.getSong();
       this.playStatus=true;
-      this.switchPlayBtn();
+      // this.switchPlayBtn();
     },
     showAside:function(){             //显示频道侧边栏
       this.musicCt.addClass('blur');
@@ -363,7 +371,7 @@ MusicPlug.prototype={
     var curTime=this.myAuto[0].currentTime*1000;
     for(var i=0;i<this.lTime.length;i++){
       if(curTime>=this.lTime[i]&&curTime<=this.lTime[i+1]){
-        $('#'+this.lTime[i]).css({color: '#fff',display:'block'});
+        $('#'+this.lTime[i]).css({color: '#f00',display:'block'});
         this.lyricSpa.removeClass('hide');
       }else{
         $('#'+this.lTime[i]).css({display:'none'});
