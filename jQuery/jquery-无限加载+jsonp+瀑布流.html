@@ -75,10 +75,10 @@
   //防止滚动太频繁，只在最后一次事件响应的时候执行 checkshow
   var clock;
   $(window).on('scroll',function(){
-    if(clock){
+    if(clock){//如果没过0.3秒滚动就清除定时器
       clearTimeout(clock);
     }
-    clock=setTimeout(function(){
+    clock=setTimeout(function(){//直到最后一次滚动延时0.3秒才执行
       checkShow();
     },300);
   });
