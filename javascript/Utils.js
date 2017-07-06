@@ -40,8 +40,8 @@ var Utils = {
     },
     removeClass: function(el, cls) {
       var reg = new RegExp('\\b' + cls + '\\b', 'g'),
-        tmp = node.className.replace(reg, '').replace(/\s{2,}/g, ' '); //把两个以上的空格替换为一个空格
-      el.className = trim(tmp);
+        tmp = el.className.replace(reg, '').replace(/\s{2,}/g, ' '); //把两个以上的空格替换为一个空格
+        el.className = trim(tmp);
     },
 
     /*去除字符串两边的空白*/
@@ -105,7 +105,7 @@ var Utils = {
       var s = [];
 
       for (var i = 0; i < newArray.length; i++) {
-        if (i !== 0 && newArray[i][0] === '0') {
+        if (i !== 0 && newArray[i][0] === '0') {     //去掉01-08前的0
           newArray[i] = newArray[i].replace('0', '');
         }
         for (var j = 0; j < newArray[i].length; j++) {
@@ -137,6 +137,18 @@ var Utils = {
       return newobj;
     },
 
+    /* var arr = [ "test", 2, 1.5, false ]
+     * find(arr, "test") // 0
+     */
+    var arr = [ "test", 2, 1.5, false ];
+    find:function(arr,str){
+      for (var i=0;i<arr.length;i++){
+        if(arr[i]===str){
+          return i;
+        }
+      }
+      return -1;
+    }
     /* 事件绑定的封装 */
     index: function(e, node) { // children No. 判断子元素序列
       for (var i = 0; i < node.children.length; i++) {
@@ -162,6 +174,36 @@ var Utils = {
       } else {
         elem["on" + type] = null;
       }
+    },
+
+   //大师手笔,闭包
+    addEvent:function (node, type, handler) {
+      if (!node) return false;
+      if (node.addEventListener) {
+        node.addEventListener(type, handler, false);
+        return true;
+      }
+      else if (node.attachEvent) {
+        node['e' + type + handler] = handler;
+        node[type + handler] = function() {
+          node['e' + type + handler](window.event);
+        };
+        node.attachEvent('on' + type, node[type + handler]);
+        return true;
+      }
+      return false;
+    },
+    removeEvent:function (node, type, handler) {
+      if (!node) return false;
+      if (node.removeEventListener) {
+        node.removeEventListener(type, handler, false);
+        return true;
+      }
+      else if (node.detachEvent) {
+        node.detachEvent('on' + type, node[type + handler]);
+        node[type + handler] = null;
+      }
+      return false;
     },
     getEvent: function(event) {
       return event ? event : window.event;
