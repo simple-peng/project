@@ -30,7 +30,7 @@
     <li>内容2</li>
   </ul>
   <div class="ct">
-    <a href="#" class="btn">加载更多</a>    
+    <a href="#" class="btn">加载更多</a>
   </div>
   <script>
     function ajax(opts){
@@ -39,14 +39,14 @@
       for(i in opts.data){
         str += i+'='+opts.data[i]+'&';
       }
-      str = str.substr(0, str.length-1); 
+      str = str.substr(0, str.length-1);
       if(opts.type.toLowerCase() === 'get'){
         request.open('GET', opts.url+'?'+str, true);
         request.send();
       }
       if(opts.type.toLowerCase() === 'post'){
         resuest.open('POST', opts.url, true);
-        ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        resuest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         request.send(str);
       }
       request.onreadystatechange=function(){
@@ -83,7 +83,7 @@
             li.innerText=ret[i];
             docFrag.appendChild(li);
           }
-          var ct=document.getElementById('list');   
+          var ct=document.getElementById('list');
           console.log(ct);    // {status: 0}
           ct.appendChild(docFrag);
           document.querySelector('.btn').innerText="加载更多";

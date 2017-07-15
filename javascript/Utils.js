@@ -63,7 +63,7 @@ var Utils = {
       return exp.test(str);
     },
     isValidPassword: function(str) { //长度6-20个字符，包括大写字母、小写字母、数字、下划线至少两种
-      if (str.length < 6 || str.length > 16) {
+      if (str.length < 6 || str.length > 20) {
         return false;
       }
       //如果包含上述四种以外的字符，false
@@ -96,6 +96,25 @@ var Utils = {
       var second = Math.floor((intv - day * a - hours * a / 24 - minute * a / 24 / 60) / a * 24 * 60 * 60);
       return '倒计时' + day + '天' + hours + '小时' + minute + '分' + second + '秒';
     },
+    //getChsDate('2016-11-11') //"二零一六年一一月一一日"
+    getChsDate:function(timeStr){
+      var obj={'0':'零','1':'一','2':'二','3':'三','4':'四','5':'五','6':'六','7':'七','8':'八','9':'九'},
+          count=0;
+      for(var i =0;i<timeStr.length;i++){
+        if(timeStr[i]==='-'){
+          if(count==0){
+            timeStr=timeStr.replace(timeStr[i],'年');
+          }else{
+            timeStr=timeStr.replace(timeStr[i],'月');
+          }
+          count++;
+          continue;
+        }
+          timeStr=timeStr.replace(timeStr[i],obj[timeStr[i]]);
+      }
+      timeStr=timeStr+'日';
+      return timeStr
+    }
     CNDateString: function(date) {
       var newArray = str.split('-'); //把数字日期改成中文日期  CNDateString('2016-01-08')
       newArray[0] = newArray[0] + '年';
@@ -119,12 +138,15 @@ var Utils = {
       }
       return s.join('');
     },
+    /* 获取n天前日期 */
     getLastNDays: function(n) {
       var d = new Date(Date.now() - n * 24 * 60 * 60 * 1000); //获取n天前的日期
       return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
     },
 
-    /* 对象深拷贝 */
+    /* 对象深拷贝
+     *newobj不受obj影响
+    */
     objCopy: function(obj) {
       var newobj = {};
       for (var i in obj) {
@@ -136,7 +158,93 @@ var Utils = {
       }
       return newobj;
     },
-
+    /**参数说明：
+     * 根据长度截取先使用字符串，超长部分追加…
+     * str 对象字符串
+     * len 目标字节长度
+     * 返回值： 处理结果字符串
+    */
+    cutString: function(str, len) {
+      //length属性读出来的汉字长度为1
+      if (str.length * 2 <= len) {
+        return str;
+      }
+      var strlen = 0;
+      var s = "";
+      for (var i = 0; i < str.length; i++) {
+        s = s + str.charAt(i);
+        if (str.charCodeAt(i) > 128) {
+          strlen = strlen + 2;
+          if (strlen >= len) {
+            return s.substring(0, s.length - 1) + "...";
+          }
+        } else {
+          strlen = strlen + 1;
+          if (strlen >= len) {
+            return s.substring(0, s.length - 2) + "...";
+          }
+        }
+      }
+      return s;
+    }
+     /*
+      * 获取URL的参数
+      * */
+   getQueryStringRegExp:function(name) {
+        var reg = new RegExp("(^|\\?|&)" + name + "=([^&^#]*)(\\s|&|$|#)", "i");
+        if (reg.test(location.href)) {
+                return unescape(RegExp.$2.replace(/\+/g, " "));
+        }
+        return "";
+    };
+    /*
+     *四舍五入两位
+     *2.98765.toFixed(2)//'2.99',toFixed左边不能为整数，会报错
+     **/
+     function limit2(num){
+        if(!(num*10%10)){
+          return num+'.00';
+        }else{
+          return Math.round(num*100)/100;
+        }
+     }
+     /*
+      *获取从min到max之间的随机数，包括min不包括max
+      */
+    function randomMin(min, max) {
+      console.log(Math.random() * (max - min) + min)
+    }
+    /*
+      *获取从min到max之间的随机数，包括min包括max
+      */
+    function randomMax(min, max) {
+      console.log(Math.floor(Math.random * (max - min + 1)) + min)
+    }
+    /*
+     *获取一个随机数组，数组中元素为长度为len，最小值为min，最大值为max(包括)的随机数
+     */
+    function randomArray(min,max,len){
+      var arr =[];
+      for(var i=0;i<arr.length;i++){
+        arr.push(Math.floor(Math.random * (max - min + 1)) + min)
+      }
+    }
+     /*用 splice 实现 push、pop、shift、unshift方法*/
+     function popSplice(arr){
+      return arr.splice(arr.length-1,1)[0]
+      }
+    }
+    function pushSplice(arr,num){
+      arr.splice(arr.length,0,num);
+      return arr.length
+    }
+    function shiftSplice(arr){
+      return arr.splice(0,1)[0]
+    }
+    function unshiftSplice(arr,num){
+      arr.splice(0,0,num);
+      return arr.length
+    }
     /* var arr = [ "test", 2, 1.5, false ]
      * find(arr, "test") // 0
      */
@@ -148,6 +256,71 @@ var Utils = {
         }
       }
       return -1;
+    }
+    /*filterNumeric
+     * arr = ["a", 1, "b", 2];
+     * newarr = filterNumeric(arr); // [1,2]
+     */
+    var arr = ["a", 1, "b", 2];
+    filterNumeric:function(arr){
+      var after=arr.filter(function(val){
+        return typeof val ==='number'
+      })
+     return after;
+    }
+    filterNumeric:function(arr){
+      for(var i=0;i<arr.length;i++){
+        if(typeof arr[i]==='string'){
+          arr.splice(i,1);
+          i--;
+        }
+      }
+      return arr;
+    }
+    addClassName:function (obj,str){
+      var classNameArr=obj.className.split(' ');
+      var isRepeat=classNameArr.some(function(val){
+      return(val==str)
+      })
+      if(!isRepeat){
+      classNameArr.push(str);
+      obj.className=classNameArr.join(' ');
+      }
+      return obj;
+    }
+    //或者
+    addClassName:function (obj,str){
+      var classNameArr=obj.className.split(' ');
+      var unRepeat=classNameArr.every(function(val){
+      return(val!=str)
+      })
+      if(unRepeat){
+      classNameArr.push(str);
+      obj.className=classNameArr.join(' ');
+      }
+      return obj;
+    }
+    //或者
+    addClassName:function (obj,str){
+      var classNameArr=obj.className.split(' ');
+      for(var i =0;i<classNameArr.length;i++){
+        if(str===classNameArr[i]){
+          return obj;
+        }
+      }
+      classNameArr.push(str);
+      obj.className=classNameArr.join(' ');
+      return obj
+   }
+    removeClassName:function (obj,str){
+      var classNameArr=obj.className.split(' ');
+      for(var i=0;i<classNameArr.length;i++){
+        if(classNameArr[i]===str){
+          classNameArr.splice(i,1);
+          obj.className=classNameArr.join(' ');
+          return obj;
+        }
+      }
     }
     /* 事件绑定的封装 */
     index: function(e, node) { // children No. 判断子元素序列
