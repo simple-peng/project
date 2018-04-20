@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>flex布局</title>
+  <style type="text/css">
+  .ct{
+    display: flex;
+    width: 300px;
+    height: 300px;
+    border:1px solid;
+  }
+  .ct>div{
+    width:50px;
+    border:1px solid red;
+  }
+  .box1{
+    height: 70px;
+  }
+  .box2{
+    height: 80px;
+    flex: 1;
+  }
+  .box3{
+    height: 60px;
+  }
+  .ct2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    border:1px solid;
+  }
+  .box4{
+    width: 50px;
+    height: 70px;
+    background: blue;
+
+  }
+  .ct3{
+    display: flex;
+    align-items:center;
+    width: 300px;
+    height: 300px;
+    border:1px solid;
+  }
+  .ct3>div{
+    width:50px;
+    border:1px solid red;
+  }
+  .box5{
+    height: 50px;
+    margin-right:10px;
+  }
+  .box6{
+    height: 80px;
+    flex:1;
+  }
+  .ct4{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content:center;
+    /*align-items:center;*/
+    width: 600px;
+    height: 300px;
+    border:1px solid;
+  }
+  .ct4>div{
+    width:100px;
+    height:100px;
+    border:1px solid;
+    border-radius: 50px;
+  }
+  ul{
+    list-style: none;
+  }
+  .flex-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+  .flex-item{
+    background: tomato;
+    width: 200px;
+    height: 150px;
+    line-height: 150px;
+    margin-top: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+  }
+
+  .Grid {
+     /*display: flex;*/
+     border:1px solid;
+     column-count: 3;
+     column-width:30px;
+     column-gap:10px;
+    column-rule: 1px solid black;
+    column-span: 1;
+  }
+
+
+
+/*.Grid-cell {
+  flex: 1;
+  margin: 10px;
+  border:1px solid;
+}
+.Grid-cell-left{
+  flex: 0 0 25%;
+  margin: 10px;
+  border:1px solid;
+}
+.Grid-cell-right{
+  flex: 0 0 33%;
+  margin: 10px;
+  border:1px solid;
+}*/
+  .wrapper{
+    width:500px;
+    display: flex;
+    align-items:center;
+    border:1px solid;
+  }
+
+
+/*以下6个属性设置在项目上*/
+/*order
+flex-grow
+flex-shrink
+flex-basis
+flex
+align-self*/
+
+  /*flex-grow:比如父容器宽度为500px,子容器1：100px  子容器2：100px  子容器3：100px 子容器1设置flex-grow：1，子容器2设置flex-grow：2，那么最终子容器1：(500-100*3)/3*1+100  子容器2：(500-100*3)/3*2+100*/
+
+  /*flex-shrink:500px,子容器1：200px,flex-shrink:1（默认值）  子容器2:200px,flex-shrink:0（不压缩）子容器3:200px,flex-shrink:0（不压缩) ===>子容器1：100px(200*x+200+200=500 => 压缩率x=1/2 =>子容器1为200px*1/2=100px ) 子容器2：200px,子容器3：200px,
+  */
+
+ /*flex-basis:如果子容器设置了flex-basis或者width，那么在分配空间之前，他们会先跟父容器预约这么多的空间，然后剩下的才是归入到剩余空间，比如父容器宽度为500，子容器1 flex-basis：100px  子容器2 flex-basis：100px  子容器3 flex-basis：100px，剩余空间为500-100*3
+ 如果1.同时设置flex-basis和width，flex-basis的优先级比width高。2.如果flex-basis和width其中有一个是auto，那么另外一个非auto的属性优先级会更高。3.flex-basis和width都为auto值，那最后的空间就是根据内容多少来定的，内容多占据的水平空间就多*/
+
+  .header{
+    width:auto;
+    height: 50px;
+    background: tomato;
+     flex:1 2 auto;
+     align-self:flex-start;
+  }
+
+  .main{
+    width:auto;
+    background: blue;
+    flex:1 1 auto;
+  }
+  .aside-1{
+    background: yellow;
+  }
+  .aside-2{
+    background: pink;
+  }
+  .footer{
+    width:auto;
+    height: 50px;
+    background: green;
+    flex:1 1 auto;
+  }
+  header,footer{
+    height: 30px;
+    background: gray;
+  }
+  .shengbei-body{
+    border:1px solid;
+    padding-left:200px;
+    padding-right: 200px;
+  }
+  .shengbei-body main{
+    width: 100%;
+    height: 500px;
+    background: green;
+    float: left;
+
+  }
+  .shengbei-body nav{
+    width: 200px;
+    height: 300px;
+    background: yellow;
+    float:left;
+    margin-left:-100%;
+    position: relative;
+    left: -200px;
+  }
+  .shengbei-body aside{
+    width: 200px;
+    height:300px;
+    background: red;
+    float:left;
+    margin-left:-200px;
+    position: relative;
+    left: 200px;
+  }
+  .shengbei-body:after{
+    content:'';
+    display:block;
+    clear:both;
+  }
+
+  .shuangfeiyi-body{
+    border:1px solid;
+  }
+  .content{
+    width: 100%;
+    height:500px;
+    background: green;
+    float: left;
+  }
+  .shuangfeiyi-body nav{
+    width: 200px;
+    height: 300px;
+    background: yellow;
+    float:left;
+    margin-left:-100%;
+  }
+  .shuangfeiyi-body aside{
+    width: 200px;
+    height:300px;
+    background: red;
+    float:left;
+    margin-left:-200px;
+  }
+  .shuangfeiyi-body main{
+    border:1px solid;
+    background: grey;
+    height: 300px;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  .shuangfeiyi-body:after{
+    content:'';
+    display:block;
+    clear:both;
+  }
+  .flexshengbei-body{
+    display: flex;
+    min-height: 1000px;
+  }
+  .flexshengbei-body nav{
+    background: yellow;
+    order:0;
+    flex:0 0 12em;
+    /*或flex: 1;*/
+  }
+  .flexshengbei-body main{
+    background: blue;
+    order:1;
+    flex: 1;
+    /*或flex: 2;*/
+  }
+  .flexshengbei-body aside{
+    background: red;
+    order:2;
+    flex:0 0 12em;
+    /*或flex: 1;*/
+  }
+
+  .bordered {
+  width: 500px;
+  border-width: 20px;
+  border-image: url(https://segmentfault.com/img/bVUbhS?w=81&h=81) 20 stretch;
+}
+
+
+  </style>
+</head>
+<body>
+<div class="bordered">
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.<br>
+  This is a div with some content.
+</div>
+<div class="ct">
+  <div class="box1">1</div>
+  <div class="box2">2</div>
+  <div class="box3">3</div>
+</div>
+<div class="ct2">
+  <div class="box4">4</div>
+</div>
+<div class="ct3">
+  <div class="box5">5</div>
+  <div class="box6">6</div>
+</div>
+<div class="ct4">
+  <div class="box7">1</div>
+  <div class="box8">2</div>
+  <div class="box7">3</div>
+  <div class="box8">4</div>
+  <div class="box7">5</div>
+  <div class="box8">6</div>
+  <div class="box7">7</div>
+  <div class="box8">8</div>
+  <div class="box7">9</div>
+  <div class="box8">10</div>
+</div>
+
+<ul class="flex-container">
+  <li class="flex-item">1</li>
+  <li class="flex-item">2</li>
+  <li class="flex-item">3</li>
+  <li class="flex-item">4</li>
+  <li class="flex-item">5</li>
+  <li class="flex-item">6</li>
+</ul>
+
+<!-- 网格的布局 -->
+<div class="Grid">
+  <div class="Grid-cell-left">1</div>
+  <div class="Grid-cell">2</div>
+  <div class="Grid-cell-right">3</div>
+</div>
+
+<!-- 圣杯布局 -->
+<header>headerheaderheaderheaderheaderheaderheaderheaderheaderheader</header>
+<div class="shengbei-body">
+  <main>圣杯布局</main>
+   <nav>nav</nav>
+  <aside>aside</aside>
+</div>
+<footer>footerfooter</footer>
+
+<!-- 双飞翼布局 -->
+<header>headerheader</header>
+<div class="shuangfeiyi-body">
+  <div class="content"><main>双飞翼</main></div>
+  <nav>nav</nav>
+  <aside>aside</aside>
+</div>
+<footer>footerfooter</footer>
+<!-- flex圣杯布局 -->
+<header>headerheader</header>
+<div class="flexshengbei-body">
+  <main>flex圣杯布局</main>
+  <nav>nav</nav>
+  <aside>aside</aside>
+</div>
+<footer>footerfooter</footer>
+
+
+
+
+
+
+<!-- 布局 -->
+<!-- <div class="wrapper">
+  <header class="header">Header</header>
+  <article class="main">
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+  </article>
+  <aside class="aside aside-1">aside 1</aside>
+  <aside class="aside aside-1">aside 2</aside>
+  <footer class="footer">Footer</footer>
+</div> -->
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+</body>
+</html>
